@@ -10,10 +10,11 @@ class TodoItem extends Component {
   }
 
   render() {
+    const { todoItem } = this.props;
     return (
       /* dangerouslySetInnerHTML={{__html: todoItem}} */
       <li>
-        {this.props.todoItem}
+        {todoItem}
         <button onClick={this.handleClickDeleteItem}>
           X
         </button>
@@ -21,8 +22,10 @@ class TodoItem extends Component {
     )
   }
 
+  // 方法也可以在props中找到；还可以传入props
   handleClickDeleteItem() {
-    this.props.handleClickDeleteProp(this.props.index);
+    const { handleClickDeleteProp, index } = this.props;
+    handleClickDeleteProp(index);
     // console.log(this.props.index);
   }
 }
