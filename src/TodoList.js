@@ -3,7 +3,9 @@ import TodoItem from './TodoItem';
 
 class TodoList extends Component {
 
-  // 函数式编程更适用于自动化测试
+  // 单项数据流
+  // react：一个视图层的框架。复杂项目复杂组件数据传递需要借助flux、redux、mbox等框架协助
+  // 函数式编程 更适用于自动化测试
 
   // 一个组件中第一个执行的函数
   constructor(props) {
@@ -30,6 +32,7 @@ class TodoList extends Component {
         <TodoItem key={index}
           todoItem={todoItem}
           index={index}
+          todoList={this.state.todoList}
           handleClickDeleteProp={this.handleClickDelete}
         />
       );

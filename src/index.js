@@ -9,7 +9,7 @@ ReactDOM.render(
   <React.StrictMode>
     <TodoList />
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById('root')   // 页面上除root之外的标签 可与react无关（使用其他框架）
 );
 
 // If you want your app to work offline and load faster, you can change
