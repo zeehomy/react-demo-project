@@ -1,4 +1,5 @@
 import React, { Component } from 'react'; 
+import PropTypes from 'prop-types';
 
 class TodoItem extends Component {
 
@@ -10,6 +11,8 @@ class TodoItem extends Component {
   }
 
   render() {
+
+    // 子组件只能使用属性值，不能改变传递进来的属性值
     const { todoItem } = this.props;
     return (
       /* dangerouslySetInnerHTML={{__html: todoItem}} */
@@ -29,5 +32,13 @@ class TodoItem extends Component {
     // console.log(this.props.index);
   }
 }
+
+
+// 类型
+TodoItem.propTypes = {
+  todoItem: PropTypes.string,
+  handleClickDeleteProp: PropTypes.func,
+  index: PropTypes.number
+};
 
 export default TodoItem;
