@@ -9,5 +9,7 @@ const a = 0;
 // rebase merge
 // rebase merge master update
 
+// rebase update 1
+// rebase update 2
 const b = 12;
 // rebase update 1
