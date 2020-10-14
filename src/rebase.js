@@ -10,6 +10,10 @@ const a = 0;
 // rebase merge master update
 
 // rebase update 1
+
+function name(params) {
+  
+}
 // rebase update 2
 const b = 12;
 // rebase update 1
