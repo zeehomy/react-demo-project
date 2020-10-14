@@ -10,3 +10,4 @@ const a = 0;
 // rebase merge master update
 
 const b = 12;
+// rebase update 1
