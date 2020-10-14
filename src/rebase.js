@@ -8,3 +8,5 @@ const a = 0;
 
 // rebase merge
 // rebase merge master update
+
+const b = 12;
