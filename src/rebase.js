@@ -5,3 +5,5 @@
 
 // rebase
 const a = 0;
+
+// rebase merge
