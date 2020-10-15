@@ -1,11 +1,16 @@
 import React, { Component, Fragment } from 'react';
 import TodoItem from './TodoItem';
+import Test from './Test';
 
 class TodoList extends Component {
 
-  // 单项数据流
-  // react：一个视图层的框架。复杂项目复杂组件数据传递需要借助flux、redux、mbox等框架协助
-  // 函数式编程 更适用于自动化测试
+  // 1. 单项数据流
+  // 2. react：一个视图层的框架。复杂项目复杂组件数据传递需要借助flux、redux、mbox等框架协助
+  // 3. 函数式编程 更适用于自动化测试
+  // 4. 当组件的state和props改变时，render函数会重新执行
+  // 5. 当父组件的render函数执行时，子组件的render函数会重新执行
+  // 6. react diff 同层比较。当节点不同时，子节点不再比较直接删掉一同替换。简化diff算法复杂程度
+  // 7. 同时多次setState, react会整理为一次统一进行，减少比对次数
 
   // 一个组件中第一个执行的函数
   constructor(props) {
@@ -56,6 +61,7 @@ class TodoList extends Component {
         <ul>
           {this.todoList()}
         </ul>
+        <Test content={this.state.inputValue} />
       </Fragment>
     )
   }
