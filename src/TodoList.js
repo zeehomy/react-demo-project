@@ -25,7 +25,12 @@ class TodoList extends Component {
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleClickSubmit = this.handleClickSubmit.bind(this);
     this.handleClickDelete = this.handleClickDelete.bind(this);
+
+    // this.inputElement = null;
   }
+
+  // 不建议使用ref方式操作数据，如果有异步操作ref可能更新不够及时（可在回调中使用）；建议使用单向数据流驱动
+  inputElement = null;
 
   // todoList渲染函数
   // 将JSX中的长逻辑抽离处理
@@ -49,7 +54,8 @@ class TodoList extends Component {
       <Fragment>
         <div>
           <label htmlFor="insertInput">事项：</label>
-          <input id="insertInput"
+          <input ref={(element) => {this.inputElement = element;}}
+            id="insertInput"
             value={this.state.inputValue}
             onChange={this.handleInputChange}
           />
@@ -58,7 +64,7 @@ class TodoList extends Component {
           }
           <button onClick={this.handleClickSubmit}>提交</button>
         </div>
-        <ul>
+        <ul ref={(element) => {this.ulElement = element;}}>
           {this.todoList()}
         </ul>
         <Test content={this.state.inputValue} />
@@ -72,7 +78,8 @@ class TodoList extends Component {
     // });
 
     // 保存value结果，供异步使用（在setState内直接访问target为空）
-    const inputValue = e.target.value;
+    // const inputValue = e.target.value;
+    const inputValue = this.inputElement.value;
 
     // 新版setState提供函数方式
     this.setState(() => ({
@@ -90,7 +97,13 @@ class TodoList extends Component {
     this.setState((prevState) => ({
       inputValue: '',
       todoList: [...prevState.todoList, prevState.inputValue]
-    }));
+    }), () => {
+
+      // 第二个参数将在 setState 完成合并并重新渲染组件后执行。通常建议使用 componentDidUpdate() 来代替此方式.
+      // https://zh-hans.reactjs.org/docs/react-component.html#setstate
+      console.log(this.ulElement.querySelectorAll('li').length);
+    });
+
   }
 
   handleClickDelete(index) {
