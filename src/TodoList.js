@@ -50,6 +50,7 @@ class TodoList extends Component {
   }
 
   render() {
+    console.log('render');
     return (
       <Fragment>
         <div>
@@ -67,7 +68,7 @@ class TodoList extends Component {
         <ul ref={(element) => {this.ulElement = element;}}>
           {this.todoList()}
         </ul>
-        <Test content={this.state.inputValue} />
+        <Test />
       </Fragment>
     )
   }
@@ -101,7 +102,7 @@ class TodoList extends Component {
 
       // 第二个参数将在 setState 完成合并并重新渲染组件后执行。通常建议使用 componentDidUpdate() 来代替此方式.
       // https://zh-hans.reactjs.org/docs/react-component.html#setstate
-      console.log(this.ulElement.querySelectorAll('li').length);
+      // console.log(this.ulElement.querySelectorAll('li').length);
     });
 
   }
@@ -129,6 +130,17 @@ class TodoList extends Component {
       };
 
     });
+  }
+
+  componentDidMount() {
+
+    // 即使render中没有访问state，render也会执行
+    // setTimeout(() => {
+      
+    //   this.setState(() => ({
+    //     inputValue: 'inputValue'
+    //   }));
+    // }, 2000);
   }
 }
 
