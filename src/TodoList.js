@@ -11,9 +11,12 @@ class TodoList extends Component {
   // 5. 当父组件的render函数执行时，子组件的render函数会重新执行
   // 6. react diff 同层比较。当节点不同时，子节点不再比较直接删掉一同替换。简化diff算法复杂程度
   // 7. 同时多次setState, react会整理为一次统一进行，减少比对次数
+  // 8. 生命周期周期函数指组件在某一时刻自动调用执行的函数
+  // 9. 
 
   // 一个组件中第一个执行的函数
   constructor(props) {
+    console.log('constructor');
     super(props);
 
     this.state = {
@@ -47,6 +50,10 @@ class TodoList extends Component {
         />
       );
     })
+  }
+
+  UNSAFE_componentWillMount() {
+    console.log('UNSAFE_componentWillMount');
   }
 
   render() {
@@ -141,6 +148,12 @@ class TodoList extends Component {
     //     inputValue: 'inputValue'
     //   }));
     // }, 2000);
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+
+    console.log('todolist shouldComponentUpdate');
+    return true;
   }
 }
 
