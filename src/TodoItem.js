@@ -32,6 +32,12 @@ class TodoItem extends Component {
     handleClickDeleteProp(index);
     // console.log(this.props.index);
   }
+
+  componentWillUnmount() {
+
+    console.log('TodoItem componentWillUnmount');
+  }
+
 }
 
 

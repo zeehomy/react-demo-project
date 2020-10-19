@@ -53,11 +53,17 @@ class TodoList extends Component {
   }
 
   UNSAFE_componentWillMount() {
-    console.log('UNSAFE_componentWillMount');
+    console.log('TodoList UNSAFE_componentWillMount');
+  }
+
+  static getDerivedStateFromProps(props, state) {
+    console.log('todoList getDerivedStateFromProps');
+    console.log('getDerivedStateFromProps', state);
+    return null;
   }
 
   render() {
-    console.log('render');
+    console.log('TodoList render');
     return (
       <Fragment>
         <div>
@@ -152,7 +158,10 @@ class TodoList extends Component {
 
   shouldComponentUpdate(nextProps, nextState) {
 
+    // 返回false时，state也可能已经改变但是视图没变，容易产生bug。
+    // 通常通过判断state是否改变，决定是否返回true。
     console.log('todolist shouldComponentUpdate');
+    console.log(this.state.todoList);
     return true;
   }
 }
