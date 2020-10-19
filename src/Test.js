@@ -12,9 +12,9 @@ class Test extends Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
+  // 此方法存在时，UNSAFE_componentWillReceiveProps不会执行
   static getDerivedStateFromProps(props, state) {
-    console.log('Test getDerivedStateFromProps');
-    console.log('getDerivedStateFromProps', state);
+    console.log('Test getDerivedStateFromProps', state);
     return null;
   }
 

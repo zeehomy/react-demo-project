@@ -10,8 +10,19 @@ class TodoItem extends Component {
     this.handleClickDeleteItem = this.handleClickDeleteItem.bind(this);
   }
 
+  shouldComponentUpdate(nextProps, nextState) {
+
+    if (nextProps.todoItem !== this.props.todoItem) {
+      return true;
+    } else {
+
+      return false;
+    }
+  }
+
   render() {
 
+    console.log('TodoItem render', this.props.todoItem);
     // 子组件只能使用属性值，不能改变传递进来的属性值
     const { todoItem, text } = this.props;
     return (
@@ -35,7 +46,7 @@ class TodoItem extends Component {
 
   componentWillUnmount() {
 
-    console.log('TodoItem componentWillUnmount');
+    console.log('TodoItem componentWillUnmount', this.props.todoItem);
   }
 
 }

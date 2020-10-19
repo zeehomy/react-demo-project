@@ -42,7 +42,7 @@ class TodoList extends Component {
   todoList() {
     return this.state.todoList.map((todoItem, index) => {
       return (
-        <TodoItem key={index}
+        <TodoItem key={todoItem}
           todoItem={todoItem}
           index={index}
           todoList={this.state.todoList}
@@ -57,8 +57,7 @@ class TodoList extends Component {
   }
 
   static getDerivedStateFromProps(props, state) {
-    console.log('todoList getDerivedStateFromProps');
-    console.log('getDerivedStateFromProps', state);
+    console.log('todoList getDerivedStateFromProps', state);
     return null;
   }
 
@@ -160,8 +159,8 @@ class TodoList extends Component {
 
     // 返回false时，state也可能已经改变但是视图没变，容易产生bug。
     // 通常通过判断state是否改变，决定是否返回true。
-    console.log('todolist shouldComponentUpdate');
-    console.log(this.state.todoList);
+    // this.state.todoList为之前的状态；nextState为改变后的状态
+    console.log('todolist shouldComponentUpdate', this.state.todoList);
     return true;
   }
 }
