@@ -1,74 +1,32 @@
-import React from 'react';      // React 使得可以使用JSX语法
-import './App.css';
+import React, { Component, Fragment } from 'react';
+import './style.css';
 
-class App extends React.Component {
+class App extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      list: [
-        {
-          id: 1,
-          name: 'a'
-        },
-        {
-          id: 2,
-          name: 's'
-        },
-        {
-          id: 3,
-          name: 'd'
-        },
-        {
-          id: 4,
-          name: 'f'
-        }
-      ]
+      show: true
     };
 
+    this.handleClick = this.handleClick.bind(this);
   }
 
   handleClick() {
-
-    this.setState({
-      list: [
-        {
-          id: 1,
-          name: 'add'
-        },
-        {
-          id: 2,
-          name: 'sss'
-        },
-        {
-          id: 3,
-          name: 'd'
-        },
-        {
-          id: 4,
-          name: 'f'
-        }
-      ]
+    this.setState((prevState) => {
+      return {
+        show: !prevState.show
+      }
     });
   }
 
   render() {
-    const {list} = this.state;
 
     return (
-      <>
-        {
-          list.map((item, index) => {
-            return (
-              <div key={index} my-name={item.name}>
-              </div>
-            );
-          })
-        }
-        <button onClick={e => {
-          this.handleClick();
-        }}>改变</button>
-      </>
+      <Fragment>
+        <div className={this.state.show ? 'show' : 'hide'}>hello</div>
+        <button onClick={this.handleClick}>toggle</button>
+      </Fragment>
     );
   }
 }

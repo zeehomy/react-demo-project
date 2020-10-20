@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import axios from 'axios';
 import TodoItem from './TodoItem';
 import Test from './Test';
 
@@ -153,6 +154,18 @@ class TodoList extends Component {
     //     inputValue: 'inputValue'
     //   }));
     // }, 2000);
+
+    axios.get('http://localhost:3100/posts')
+      .then((res) => {
+        console.log(res.data);
+
+        this.setState(() => ({
+          todoList: [...res.data]
+        }));
+      })
+      .catch(() => {
+        alert('error');
+      });
   }
 
   shouldComponentUpdate(nextProps, nextState) {
