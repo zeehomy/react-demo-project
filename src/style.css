@@ -43,3 +43,30 @@
     color: blue;
   }
 }
+
+.fade-enter, .fade-appear {
+  opacity: 0;
+  color: blue;
+}
+
+.fade-enter-active, .fade-appear-active  {
+  opacity: 1;
+  color: green;
+  transition: opacity 1000ms ease-in;
+}
+
+.fade-exit {
+  opacity: 1;
+  color: red;
+}
+
+.fade-exit-active {
+  opacity: 0;
+  color: green;
+  transition: opacity 1000ms ease-in;
+}
+
+.fade-exit-done {
+  opacity: 0;
+  color: blue;
+}
