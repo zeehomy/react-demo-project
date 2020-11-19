@@ -4,14 +4,15 @@ const defaultState = {
 }
 
 export default function reducer (state = defaultState, action) {
-  // switch (action.type) {
-  //   case 'INCREMENT':
-  //     return state + 1;
-  //   case 'DECREMENT':
-  //     return state - 1;
-  //   default:
-  //     return state;
-  // }
 
-  return state;
+  switch (action.type) {
+    case 'change_input_value':
+      return {
+        ...state,
+        inputValue: action.inputValue
+      };
+    default:
+      return state;
+  }
+
 }
