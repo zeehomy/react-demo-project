@@ -10,13 +10,13 @@ export default function reducer (state = defaultState, action) {
     case CHANGE_INPUT_VALUE:
       return {
         ...state,
-        inputValue: action.inputValue
+        inputValue: action.value
       };
 
     case ADD_TODO_ITEM:
       return {
         inputValue: '',
-        todos: [...state.todos, action.todoItem]
+        todos: [...state.todos, state.inputValue]
       };
 
     case DELETE_TODO_ITEM:

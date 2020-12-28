@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Input, Button, List } from 'antd';
 import store from './store';
 import 'antd/dist/antd.css';
-import {CHANGE_INPUT_VALUE, ADD_TODO_ITEM, DELETE_TODO_ITEM} from './store/actions';
+import { getChangeInputValueAction, getAddTodoItemAction, getDeleteTodoItemAction } from './store/actionCreators';
 
 class TodoList extends Component {
 
@@ -17,11 +17,7 @@ class TodoList extends Component {
   }
 
   handleInputChange(e) {
-
-    store.dispatch({
-      type: CHANGE_INPUT_VALUE,
-      inputValue: e.target.value
-    });
+    store.dispatch(getChangeInputValueAction(e.target.value));
   }
 
   handleStoreChange() {
@@ -29,17 +25,11 @@ class TodoList extends Component {
   }
 
   handleClickSubmit() {
-    store.dispatch({
-      type: ADD_TODO_ITEM,
-      todoItem: this.state.inputValue
-    });
+    store.dispatch(getAddTodoItemAction());
   }
 
   handelDeleteTodo(index) {
-    store.dispatch({
-      type: DELETE_TODO_ITEM,
-      index
-    });
+    store.dispatch(getDeleteTodoItemAction(index));
   }
 
   render() {
