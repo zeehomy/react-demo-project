@@ -1,16 +1,20 @@
 /*
  * @Author: yzh
  * @Date: 2020-11-09 15:36:56
- * @LastEditTime: 2021-02-18 18:18:05
+ * @LastEditTime: 2021-03-03 17:09:08
  * @LastEditors: yzh
  * @Description: 
  * @FilePath: /demo-project/src/TodoList.js
  */
 import React, { Component } from 'react';
-import axios from 'axios';
 import store from './store';
 import TodoListUI from './TodoListUI';
-import { getInitTodosAction, getChangeInputValueAction, getAddTodoItemAction, getDeleteTodoItemAction } from './store/actionCreators';
+import { 
+  getInitTodos,
+  getChangeInputValueAction,
+  getAddTodoItemAction,
+  getDeleteTodoItemAction
+} from './store/actionCreators';
 
 class TodoList extends Component {
 
@@ -52,13 +56,7 @@ class TodoList extends Component {
   }
 
   componentDidMount() {
-    axios.get('http://localhost:3100/posts')
-      .then((res) => {
-        store.dispatch(getInitTodosAction(res.data));
-      })
-      .catch(() => {
-        alert('error');
-      });
+    store.dispatch(getInitTodos());
   }
 }
 
