@@ -1,8 +1,8 @@
 /*
  * @Author: yzh
  * @Date: 2020-11-09 15:36:56
- * @LastEditTime: 2021-03-03 17:18:26
- * @LastEditors: yzh
+ * @LastEditTime: 2021-04-09 09:41:58
+ * @LastEditors: Please set LastEditors
  * @Description: 
  * @FilePath: /demo-project/src/TodoList.js
  */
@@ -55,6 +55,7 @@ class TodoList extends Component {
     );
   }
 
+  // 
   componentDidMount() {
     store.dispatch(getInitTodos);
   }
