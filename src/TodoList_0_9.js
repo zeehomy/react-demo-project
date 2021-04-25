@@ -13,7 +13,7 @@ class TodoList extends Component {
   // 6. react diff 同层比较。当节点不同时，子节点不再比较直接删掉一同替换。简化diff算法复杂程度
   // 7. 同时多次setState, react会整理为一次统一进行，减少比对次数
   // 8. 生命周期周期函数指组件在某一时刻自动调用执行的函数
-  // 9. ff
+  // 9.  a
 
   // 一个组件中第一个执行的函数
   constructor(props) {
