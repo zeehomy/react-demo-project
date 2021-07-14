@@ -1,8 +1,7 @@
 /*
  * @Author: yzh
  * @Date: 2020-12-28 14:57:54
- * @LastEditTime: 2021-02-18 17:01:04
- * @LastEditors: yzh
+ * @LastEditTime: 2021-07-14 17:53:21
  * @Description: 
  * @FilePath: /demo-project/src/store/actions.js
  */
@@ -11,3 +10,4 @@ export const INIT_TODOS = 'init_todos';
 export const CHANGE_INPUT_VALUE = 'change_input_value';
 export const ADD_TODO_ITEM = 'add_todo_item';
 export const DELETE_TODO_ITEM = 'delete_todo_item';
+export const GET_TODOS_DATA = 'get_todos_data';

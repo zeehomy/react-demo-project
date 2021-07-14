@@ -1,19 +1,21 @@
 /*
  * @Author: yzh
  * @Date: 2020-11-09 15:36:56
- * @LastEditTime: 2021-04-09 10:00:10
+ * @LastEditTime: 2021-07-14 18:41:19
  * @LastEditors: Please set LastEditors
  * @Description: 
  * @FilePath: /demo-project/src/TodoList.js
  */
 import React, { Component } from 'react';
-import store from './store';
+// import store from './store';
+import store from './store/index-saga';
 import TodoListUI from './TodoListUI';
 import { 
-  getInitTodos,
+  // getInitTodos,
   getChangeInputValueAction,
   getAddTodoItemAction,
-  getDeleteTodoItemAction
+  getDeleteTodoItemAction,
+  getGetTodosDataAction
 } from './store/actionCreators';
 
 class TodoList extends Component {
@@ -57,7 +59,11 @@ class TodoList extends Component {
 
   // main
   componentDidMount() {
-    store.dispatch(getInitTodos);
+    // redux thunk
+    // store.dispatch(getInitTodos);
+    
+    // saga
+    store.dispatch(getGetTodosDataAction());
   }
 }
 
