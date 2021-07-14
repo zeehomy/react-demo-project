@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 // import './index.css';
 // import App from './App';
 import TodoList from './TodoList';
+// import RenderDemo from './RenderDemo';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
