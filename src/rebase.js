@@ -1,3 +1,9 @@
+/*
+ * @Date: 2020-10-14 15:51:39
+ * @LastEditTime: 2021-08-20 11:22:45
+ * @Description: 
+ * @FilePath: /demo-project/src/rebase.js
+ */
 // 提交注释
 // 1
 // master
@@ -16,4 +22,4 @@ function name(params) {
 }
 // rebase update 2
 const b = 12;
-// rebase update 1
+// rebase update 1 
