@@ -1,7 +1,7 @@
 /*
  * @Author: yzh
  * @Date: 2020-11-09 15:36:56
- * @LastEditTime: 2021-08-27 11:12:21
+ * @LastEditTime: 2021-08-27 18:28:34
  * @LastEditors: Please set LastEditors
  * @Description: 
  * @FilePath: /demo-project/src/TodoList.js
@@ -30,11 +30,37 @@ class TodoList extends Component {
     this.state = store.getState();
 
     this.handleStoreChange = this.handleStoreChange.bind(this);
+    this.handleInputChange = this.handleInputChange.bind(this);
     store.subscribe(this.handleStoreChange);
   }
 
+  // 截流（demo）
+  throttle(delay) {
+    let last
+    return function (content) {
+      let now = +new Date()
+      if (last && now < last + delay) {
+
+        // 去掉中间部分也可以
+        // clearTimeout(deferTimer);
+        // deferTimer = setTimeout(function () {
+        //   last = now;
+        //   console.log('ajax request ' + content);
+        // }, delay)
+      } else {
+        last = now;
+        console.log('ajax request ' + content);
+      }
+    }
+  }
+
+  throttleAjax = this.throttle(1000);
+
   handleInputChange(e) {
     store.dispatch(getChangeInputValueAction(e.target.value));
+
+    // throttleAjax(e.target.value)
+    this.throttleAjax(e.target.value);
   }
 
   handleStoreChange() {
