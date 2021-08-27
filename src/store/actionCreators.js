@@ -1,17 +1,22 @@
 /*
  * @Author: yzh
  * @Date: 2020-12-28 16:08:33
- * @LastEditTime: 2021-07-14 18:10:20
+ * @LastEditTime: 2021-08-26 15:13:26
  * @LastEditors: Please set LastEditors
  * @Description: 
  * @FilePath: /demo-project/src/store/actionCreators.js
  */
 import axios from 'axios';
-import { INIT_TODOS, CHANGE_INPUT_VALUE, ADD_TODO_ITEM, DELETE_TODO_ITEM, GET_TODOS_DATA } from './actions';
+import { INIT_TODOS, CHANGE_INPUT_VALUE, ADD_TODO_ITEM, DELETE_TODO_ITEM, GET_TODOS_DATA, GET_CHART_DATA, INIT_CHART } from './actions';
 
 export const getInitTodosAction = (todos) => ({
   type: INIT_TODOS,
   todos
+});
+
+export const getInitChartAction = (data) => ({
+  type: INIT_CHART,
+  data
 });
 
 export const getChangeInputValueAction = (value) => ({
@@ -56,4 +61,8 @@ export const getInitTodos = (dispatch) => {
 
 export const getGetTodosDataAction = () => ({
   type: GET_TODOS_DATA
+});
+
+export const getGetChartDataAction = () => ({
+  type: GET_CHART_DATA
 });

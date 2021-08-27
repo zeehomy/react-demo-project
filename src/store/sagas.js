@@ -1,14 +1,15 @@
 /*
  * @Date: 2021-07-14 16:01:09
- * @LastEditTime: 2021-07-14 18:40:18
+ * @LastEditTime: 2021-08-27 11:13:15
  * @Description: 
  * @FilePath: /demo-project/src/store/sagas.js
  */
 import { call, put, takeEvery } from 'redux-saga/effects'
 import axios from 'axios';
-import { GET_TODOS_DATA } from './actions';
+import { GET_TODOS_DATA, GET_CHART_DATA } from './actions';
 import { 
-  getInitTodosAction
+  getInitTodosAction,
+  getInitChartAction
 } from './actionCreators';
 // import Api from '...'
 
@@ -23,7 +24,19 @@ function* getTodosData(action) {
     yield put(getInitTodosAction(res.data));
   } catch (e) {
     // yield put({ type: "USER_FETCH_FAILED", message: e.message });
-    console.log('error', e);
+    console.log('get todos data error', e);
+  }
+}
+
+function* getChartData() {
+  try {
+    const res = yield call(() => {
+      return axios.get('http://localhost:3100/chart');
+    });
+    yield put(getInitChartAction(res.data));
+  } catch (e) {
+    // yield put({ type: "USER_FETCH_FAILED", message: e.message });
+    console.log('get chart data error', e);
   }
 }
 
@@ -32,6 +45,7 @@ function* getTodosData(action) {
   Allows concurrent fetches of user.
 */
 function* mySaga() {
+  yield takeEvery(GET_CHART_DATA, getChartData);
   yield takeEvery(GET_TODOS_DATA, getTodosData);
 }
 

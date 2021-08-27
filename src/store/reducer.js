@@ -1,17 +1,23 @@
 /*
  * @Author: yzh
  * @Date: 2020-11-10 11:14:26
- * @LastEditTime: 2021-02-18 16:59:36
- * @LastEditors: yzh
+ * @LastEditTime: 2021-08-26 15:28:17
+ * @LastEditors: Please set LastEditors
  * @Description: 
  * @FilePath: /demo-project/src/store/reducer.js
  */
-import { INIT_TODOS, CHANGE_INPUT_VALUE, ADD_TODO_ITEM, DELETE_TODO_ITEM } from './actions';
+import { INIT_TODOS, CHANGE_INPUT_VALUE, ADD_TODO_ITEM, DELETE_TODO_ITEM, INIT_CHART } from './actions';
 
 const defaultState = {
   inputValue: '',
-  todos: []
-}
+  todos: [],
+  chartOption: {
+    series: [{
+      data: [],
+      type: 'bar'
+    }]
+  }
+};
 
 export default function reducer(state = defaultState, action) {
 
@@ -20,6 +26,19 @@ export default function reducer(state = defaultState, action) {
       return {
         ...state,
         todos: [...action.todos]
+      };
+
+    case INIT_CHART:
+      return {
+        ...state,
+        chartOption: {
+          series: [
+            {
+              data: [...action.data],
+              type: 'bar'
+            }
+          ]
+        }
       };
 
     case CHANGE_INPUT_VALUE:

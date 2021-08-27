@@ -1,21 +1,25 @@
 /*
  * @Author: yzh
  * @Date: 2020-11-09 15:36:56
- * @LastEditTime: 2021-07-14 18:41:19
+ * @LastEditTime: 2021-08-27 11:12:21
  * @LastEditors: Please set LastEditors
  * @Description: 
  * @FilePath: /demo-project/src/TodoList.js
  */
 import React, { Component } from 'react';
 // import store from './store';
+import { Bar } from 'charts-com';
+// import store from './store/index';
 import store from './store/index-saga';
 import TodoListUI from './TodoListUI';
+import FunComponent from './FunComponent';
 import { 
   // getInitTodos,
   getChangeInputValueAction,
   getAddTodoItemAction,
   getDeleteTodoItemAction,
-  getGetTodosDataAction
+  getGetTodosDataAction,
+  getGetChartDataAction
 } from './store/actionCreators';
 
 class TodoList extends Component {
@@ -46,14 +50,25 @@ class TodoList extends Component {
   }
 
   render() {
-    const { inputValue, todos } = this.state;
+    const { inputValue, todos, chartOption = {} } = this.state;
     return (
-      <TodoListUI inputValue={inputValue}
-        todos={todos}
-        handleInputChange={this.handleInputChange}
-        handleClickSubmit={this.handleClickSubmit}
-        handelDeleteTodo={this.handelDeleteTodo}
-      />
+      <>
+        <TodoListUI inputValue={inputValue}
+          todos={todos}
+          handleInputChange={this.handleInputChange}
+          handleClickSubmit={this.handleClickSubmit}
+          handelDeleteTodo={this.handelDeleteTodo}
+        />
+        <div style={{
+          width: 600,
+          height: 400
+        }}>
+          <Bar
+            option={chartOption}
+          />
+        </div>
+        <FunComponent content={'hello'}/>
+      </>
     );
   }
 
@@ -63,6 +78,7 @@ class TodoList extends Component {
     // store.dispatch(getInitTodos);
     
     // saga
+    store.dispatch(getGetChartDataAction());
     store.dispatch(getGetTodosDataAction());
   }
 }
