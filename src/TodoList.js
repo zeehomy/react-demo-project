@@ -1,7 +1,7 @@
 /*
  * @Author: yzh
  * @Date: 2020-11-09 15:36:56
- * @LastEditTime: 2021-08-27 18:28:34
+ * @LastEditTime: 2021-08-31 14:05:48
  * @LastEditors: Please set LastEditors
  * @Description: 
  * @FilePath: /demo-project/src/TodoList.js
@@ -89,11 +89,12 @@ class TodoList extends Component {
           width: 600,
           height: 400
         }}>
-          <Bar
+          <Bar style={{ width: 600, height: 400 }}
             option={chartOption}
+            theme={'default'}
           />
         </div>
-        <FunComponent content={'hello'}/>
+        <FunComponent content={'hello'} />
       </>
     );
   }
